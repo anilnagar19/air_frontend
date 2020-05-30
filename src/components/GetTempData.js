@@ -7,6 +7,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import * as Constant from '../services/constants';
 
 export default function GetTempData(props) {
 	const [open, setOpen] = React.useState(false);
@@ -20,10 +21,7 @@ export default function GetTempData(props) {
 	};
 
 	const saveTemprature = () => {
-		const headers = {
-			"Content-Type": "application/json"
-		}
-		axios.post('http://127.0.0.1:8000/api/temperature/', {
+		axios.post(Constant.API_URL + 'temperature/', {
 			EMP_ID: props.EMP_ID,
 			TEMPERATURE: '32'
 		})

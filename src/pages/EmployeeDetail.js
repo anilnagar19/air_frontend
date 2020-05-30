@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import StickyHeadTable from '../components/table';
+import React, { useEffect, useState } from 'react';
+import * as Constant from '../services/constants';
 
 export default function EmployeeDetail() {
 	const columns = [
@@ -16,7 +17,7 @@ export default function EmployeeDetail() {
 	const [error, setError] = useState('');
 
 	useEffect(() => {
-		axios.get('http://127.0.0.1:8000/api/temperature')
+		axios.get(Constant.API_URL + 'temperature')
 			.then(res => {
 				setemployees(res.data);
 				setLoad(true);

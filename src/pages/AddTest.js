@@ -11,6 +11,8 @@ import Typography from '@material-ui/core/Typography';
 
 import GetTempData from '../components/GetTempData';
 
+import * as Constant from '../services/constants';
+
 export default function AddTest(props) {
 	const useStyles = makeStyles((theme) => ({
 		root: {
@@ -42,7 +44,7 @@ export default function AddTest(props) {
 	const [error, setError] = useState('');
 
 	function searchEmployee() {
-		axios.get('http://127.0.0.1:8000/api/employee/?EMP_ID=' + empId)
+		axios.get(Constant.API_URL + 'employee/?EMP_ID=' + empId)
 			.then(res => {
 				setemployees(res.data[0]);
 				setLoad(true);
