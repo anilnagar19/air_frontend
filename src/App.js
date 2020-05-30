@@ -135,7 +135,7 @@ function App() {
 		<Router>
 			<div style={{ display: 'flex' }}>
 				<CssBaseline />
-				<Websocket url='ws://raspberrypi:8888'
+				<Websocket url='ws://192.168.0.75:8888'
 					onMessage={handleData.bind()} />
 				<AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
 					<Toolbar className={classes.toolbar}>
