@@ -69,6 +69,9 @@ export default function AddTest(props) {
 				</Grid>
 			</Grid>
 		</form >
+		<Typography variant="h2" component="h2">
+			{props.data}
+		</Typography>
 
 		{employee && Object.keys(employee).length
 			? <Grid container spacing={3}>
