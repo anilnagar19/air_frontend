@@ -20,11 +20,12 @@ export default function GetTempData(props) {
 	};
 
 	const handleClose = () => {
-		refWebSocket.sendMessage("close");
 		setOpen(false);
 	};
 
 	const saveTemprature = () => {
+
+		refWebSocket.sendMessage("close");
 		axios.post(Constant.API_URL + 'temperature/', {
 			EMP_ID: props.EMP_ID,
 			TEMPERATURE: '400'
@@ -40,16 +41,6 @@ export default function GetTempData(props) {
 	const handleOpen = () => {
 		console.log("connected:)");
 	}
-
-	// const handleClose = () => {
-	// 	console.log("disconnected:(");
-	// }
-
-	const sendMessage = (message) => {
-		refWebSocket.sendMessage(message);
-	}
-
-
 	return (
 		<div>
 			<Websocket url={Constant.WEB_SOCKET_SERVER_URL}
