@@ -29,7 +29,7 @@ import EmployeeDetail from './pages/EmployeeDetail';
 import AddTest from './pages/AddTest';
 
 const drawerWidth = 240;
-
+let refWebSocket;
 const useStyles = makeStyles((theme) => ({
 	root: {
 		display: 'flex',
@@ -127,16 +127,33 @@ function App() {
 
 	const handleData = (event) => {
 		settempData(event);
-		console.log(event);
 	};
 
+	const handleOpen = () => {
+		console.log("connected:)");
+	}
+
+	const handleClose = () => {
+		console.log("disconnected:(");
+	}
+
+	const sendMessage = (message) => {
+		refWebSocket.sendMessage(message);
+	}
 
 	return (
 		<Router>
 			<div style={{ display: 'flex' }}>
 				<CssBaseline />
-				<Websocket url='ws://192.168.0.75:9999/'
-					onMessage={handleData.bind()} />
+				<Websocket url='ws://192.168.0.107:9999/'
+					debug={true}
+					reconnect={true}
+					onOpen={handleOpen}
+					onClose={handleClose}
+					onMessage={handleData.bind()}
+					ref={Websocket => {
+						refWebSocket = Websocket;
+					}} />
 				<AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
 					<Toolbar className={classes.toolbar}>
 						<IconButton

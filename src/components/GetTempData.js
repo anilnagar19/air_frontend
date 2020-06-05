@@ -23,17 +23,16 @@ export default function GetTempData(props) {
 	const saveTemprature = () => {
 		axios.post(Constant.API_URL + 'temperature/', {
 			EMP_ID: props.EMP_ID,
-			TEMPERATURE: '32'
+			TEMPERATURE: '400'
+		}).then(function (response) {
+			setOpen(false);
 		})
-			.then(function (response) {
-				setOpen(false);
-			})
 	}
 
 	return (
 		<div>
 			<Button variant="contained" color="primary" onClick={handleClickOpen}>
-				Start Test
+				Start
       </Button>
 			<Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title"
 				maxWidth='sm'>
@@ -48,7 +47,7 @@ export default function GetTempData(props) {
 				<DialogActions>
 					<Button onClick={saveTemprature} color="primary">
 						Save
-          </Button>
+          			</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

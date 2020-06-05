@@ -77,8 +77,13 @@ export default function StickyHeadTable(props) {
 					filtering: true,
 					sorting: true,
 					exportButton: true,
-					search: true
+					search: true,
+					pageSize: 20,
+					actionsColumnIndex: -1
 				}}
+				actions={props.actions}
+				components={props.components}
+
 			/>
 		</Paper>
 	);
