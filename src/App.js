@@ -2,7 +2,7 @@ import React from 'react';
 
 import './App.css';
 import clsx from 'clsx';
-
+import * as Constant from './services/constants';
 import Websocket from 'react-websocket';
 import Grid from '@material-ui/core/Grid';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -145,7 +145,7 @@ function App() {
 		<Router>
 			<div style={{ display: 'flex' }}>
 				<CssBaseline />
-				<Websocket url='ws://192.168.0.107:9999/'
+				<Websocket url={Constant.WEB_SOCKET_SERVER_URL}
 					debug={true}
 					reconnect={true}
 					onOpen={handleOpen}

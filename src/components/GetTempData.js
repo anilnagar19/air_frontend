@@ -9,10 +9,13 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import * as Constant from '../services/constants';
 
+import Websocket from 'react-websocket';
+let refWebSocket;
 export default function GetTempData(props) {
 	const [open, setOpen] = React.useState(false);
 
 	const handleClickOpen = () => {
+		refWebSocket.sendMessage("start");
 		setOpen(true);
 	};
 
@@ -29,8 +32,34 @@ export default function GetTempData(props) {
 		})
 	}
 
+	const handleData = (event) => {
+		//settempData(event);
+	};
+
+	const handleOpen = () => {
+		console.log("connected:)");
+	}
+
+	// const handleClose = () => {
+	// 	console.log("disconnected:(");
+	// }
+
+	const sendMessage = (message) => {
+		refWebSocket.sendMessage(message);
+	}
+
+
 	return (
 		<div>
+			<Websocket url={Constant.WEB_SOCKET_SERVER_URL}
+				debug={true}
+				reconnect={true}
+				onOpen={handleOpen}
+				onClose={handleClose}
+				onMessage={handleData.bind()}
+				ref={Websocket => {
+					refWebSocket = Websocket;
+				}} />
 			<Button variant="contained" color="primary" onClick={handleClickOpen}>
 				Start
       </Button>
