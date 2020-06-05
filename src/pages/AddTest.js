@@ -83,7 +83,8 @@ export default function AddTest(props) {
 
 	if (load) {
 		return (
-			<StickyHeadTable columns={columns} data={employee} actions={actions} components={components} />
+			<GetTempData data="100" EMP_ID={employee.EMP_ID} />
+			// <StickyHeadTable columns={columns} data={employee} actions={actions} components={components} />
 		)
 	} else {
 		return (
