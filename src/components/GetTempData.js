@@ -20,6 +20,7 @@ export default function GetTempData(props) {
 	};
 
 	const handleClose = () => {
+		refWebSocket.sendMessage("close");
 		setOpen(false);
 	};
 
